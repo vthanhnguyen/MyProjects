@@ -1,29 +1,29 @@
 
 import {server} from '../config'
-import ArticleList from '../component/ArticleList'
+import ProjectsList from '../component/ProjectsList'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Layout.module.css'
 
 
 //Head is used for custom titles, metatags, keywords,descriptions
-export default function Home({articles}) {
-  console.log(articles)
+export default function Home({projects}) {
+  //console.log(projects)
   return (
     <div>
       <h1>Welcome to NextJS</h1> 
-      <ArticleList articles = {articles}/>
+      <ProjectsList projects = {projects}/>
     </div>
   )
 }
 
 export const  getStaticProps = async () =>{
   const res = await fetch(`${server}/api/projects`)
-  const articles = await res.json()
+  const projects = await res.json()
 
   return{
     props: {
-      articles
+      projects
     }
   }
 }

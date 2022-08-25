@@ -2,14 +2,14 @@
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 
-const article = ({article}) => {
+const projects = ({projects}) => {
     //const router = useRouter()
     //const {id} = router.query
 
     return(
         <>
-            <h1>{article.title}</h1>
-            <h2>{article.body}</h2>
+            <h1>{projects.title}</h1>
+            <h2>{projects.body}</h2>
             <br />
             <Link href='/'>Go back</Link>
         </>
@@ -20,11 +20,11 @@ const article = ({article}) => {
 // Fetch data at the time at the request rather than at build time
 export const getServerSideProps = async (context) => {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
-    const article = await res.json()
+    const projects = await res.json()
 
     return{
         props:{
-            article
+            projects
         }
     }
 }
@@ -45,4 +45,4 @@ export const getServerSideProps = async (context) => {
 //         fallback: false,
 //     }
 // }
-export default article
+export default projects
